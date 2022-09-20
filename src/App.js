@@ -3,7 +3,7 @@ import 'antd/dist/antd.css';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import Login from './pages/login/index.jsx'
 import Layout from './pages/layout/index.jsx'
-import { Spin } from 'antd';
+import { Spin } from 'antd'; 
 import './App.css';
 
 const App = function () {

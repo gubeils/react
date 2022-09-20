@@ -6,16 +6,13 @@
  * @LastEditors: LiLin7
  * @LastEditTime: 2022-08-16 10:25:00
  */
-import service from '../utils/service'
+// import service from '../utils/service'
+import { getlogin } from "./index"
 
 /**
  * @params object {data} username:用户名 userpass:密码
  * **/
 export function loginAdmin(data) { // 登录请求
-  return service({
-    url: '/loginadmin',
-    method: 'get',
-    data
-  })
+  return getlogin('/loginadmin',data)
 }
 
