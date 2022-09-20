@@ -16,7 +16,7 @@ const Login = porps => {
   // }
   function onFinish(values) {
     //请求成功回调
-    console.log(111111);
+    console.log(111111);   
     console.log(values, "onFinsh");
     const params={
       username:values.phone,
