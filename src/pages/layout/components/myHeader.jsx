@@ -28,4 +28,4 @@ const MyHeader = props => {
     </div>
   );
 };
-export default MyHeader
+export default MyHeader;
