@@ -1,0 +1,107 @@
+.layout {
+    width: 100%;
+    height: 100%;
+}
+
+.layout .header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    background-color: #fff;
+    border-bottom: 2px solid #ffd14d;
+}
+
+.layout .header .title {
+    color: #9b9b9b;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.layout .header .message .name {
+    color: #9b9b9b;
+    margin-right: 16px;
+}
+
+.layout .header .message .count {
+    background-color: #ff8400;
+    color: #fff;
+    border-radius: 8px;
+    padding: 4px;
+
+}
+
+.layout .header .username {
+    display: flex;
+    z-index: 10;
+}
+
+.layout .header .username .lanuage {
+    color: #9b9b9b;
+    margin-right: 16px;
+
+}
+
+.layout .header .username .name {
+    color: #9b9b9b;
+    position: relative;
+
+
+}
+
+.layout .header .username .name .dorpdown {
+    position: absolute;
+    width: 200px;
+    background-color: aliceblue;
+    padding: 6px 8px;
+    left: -110px;
+}
+
+.layout .header .username .name .dorpdown .dropdown-top {
+    display: flex;
+    justify-content: space-between;
+    color: #36d;
+    padding: 0 5px;
+    padding-top: 10px;
+    border-bottom: 1px solid #9b9b9b;
+
+}
+
+.layout .header .username .name .dorpdown .dropdown-top span {
+    cursor: pointer;
+}
+
+.layout .header .username .name .dorpdown .dropdown-top span:first-child {
+    border-right: 1px solid gray;
+    padding-right: 37px;
+    margin-bottom: 16px;
+}
+
+.layout .header .username .name .dorpdown .dropdown-item {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 16px;
+    margin-top: 6px;
+}
+
+.layout-main {
+    display: flex;
+    width: 100%;
+    height: calc(100% - 100px);
+}
+
+.sidebar {
+    width: 168px;
+    height: 100%;
+    border-right: 2px solid #c1c1c1;
+    background: rgb(209, 209, 166);
+    overflow: auto;
+}
+
+.layout-main .main {
+    width: calc(100% - 166px);
+    height: 100%;
+    overflow-y: auto;
+
+}
