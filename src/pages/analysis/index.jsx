@@ -1,8 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import { getUserList } from "../../api/userManage";
 
-const Analysis=(props)=>{
+import "./index.less";
+import Pie from "./components/pie";
+import Bar from "./components/bar";
+
+const Analysis = props => {
+ 
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    getList();
+  }, []);
+  // 方法
+  function getList() {
+    getUserList().then(data => {
+      console.log(data);
+      setData(data);
+    
+    });
+  }
+  
+
   return (
-    <div>统计分析</div>
-  )
-}
-export default Analysis
+    <div className="analysis">
+      {/* 饼图 */}
+      <Bar data={data}/>
+      <Pie data={data} />
+    </div>
+  );
+};
+export default Analysis;

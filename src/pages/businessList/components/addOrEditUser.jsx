@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import { addUsers, modifyUser } from "../../../api/userManage";
+import { modifyMerchan, addMerchan } from "../../../api/merchanlist";
 
 import { Input, Button, Modal, Form, DatePicker, message,Select } from "antd";
 import moment from "moment";
 const {Option} = Select
 const AddOrEditUser = props => {
   const [form] = Form.useForm();
-  const { visible, cancel, getList, addOrEdit, record, username } = props;
+  const { visible, cancel, getList, addOrEdit, record, merchanname } = props;
   useEffect(() => {
     if (addOrEdit) {
       form.resetFields();
@@ -14,26 +14,29 @@ const AddOrEditUser = props => {
       if (record) {
         const {
           id,
-          username,
-          sex,
-          age,
+          merchanname,
+          type,
+          cost,
+          commrating,
+          local,
+          num,
+          tranroute,
           tel,
-          regist_time,
-          ligin_count,
-          code,
-          ip_adress
+          username,
+          key
         } = record;
         // console.log(moment(regist_time), regist_time);
         form.setFieldsValue({
           id,
-          username,
-          sex,
-          age,
+          merchanname,
+          type,
+          cost,
+          commrating,
+          local,
+          num,
+          tranroute,
           tel,
-          regist_time: moment(regist_time),
-          ligin_count,
-          code,
-          ip_adress,
+          username,
           key: id,
         });
       }
@@ -46,14 +49,14 @@ const AddOrEditUser = props => {
   function onFinish(values) {
     const params = {
       ...values,
-      regist_time: moment(values.regist_time).format("YYYY-MM-DD"),
+      // regist_time: moment(values.regist_time).format("YYYY-MM-DD"),
       key: values.id,
     };
     if (addOrEdit) {
       console.log(values);
       // 将填写的时间格式化传给后端
 
-      addUsers(params).then(data => {
+      addMerchan(params).then(data => {
         console.log(data);
         // setIsAddVisible(false);
         cancel();
@@ -62,14 +65,14 @@ const AddOrEditUser = props => {
     } else {
       console.log("Success:", values);
 
-      modifyUser(values.id, params)
+      modifyMerchan(values.id, params)
         .then(data => {
           console.log(data, "modifyUser");
           message.success("修改成功");
           // setIsVisible(false);
           cancel();
-          if (username) {
-            getList(values.username);
+          if (merchanname) {
+            getList(values.merchanname);
           } else {
             getList();
           }
@@ -94,116 +97,130 @@ const AddOrEditUser = props => {
         onFinish={onFinish}
       >
         <Form.Item
-          label="序号"
+          label="商户ID"
           name="id"
           rules={[
             {
               required: true,
-              message: "请输入序号!",
+              message: "请输入商户ID!",
             },
           ]}
         >
-          <Input disabled={!addOrEdit} placeholder="请输入序号" />
+          <Input disabled={!addOrEdit} placeholder="请输入商户ID" />
         </Form.Item>
         <Form.Item
-          label="用户名"
-          name="username"
+          label="商户名称"
+          name="merchanname"
           rules={[
             {
               required: true,
-              message: "请输入用户名!",
+              message: "请输入商户名称!",
             },
           ]}
         >
-          <Input placeholder="请输入用户名" />
+          <Input placeholder="请输入商户名称" />
         </Form.Item>
         <Form.Item
-          label="性别"
-          name="sex"
+          label="经营品类"
+          name="type"
           rules={[
             {
               required: true,
-              message: "请输入性别!",
+              message: "请输入经营品类!",
             },
           ]}
         >
-          <Select placeholder="请选择性别">
+          <Input placeholder="请输入经营品类" />
+
+          {/* <Select placeholder="请选择性别">
             <Option value="男">男</Option>
             <Option value="女">女</Option>
-          </Select>
+          </Select> */}
         </Form.Item>
         <Form.Item
-          label="年龄"
-          name="age"
+          label="人均消费(元)"
+          name="cost"
           rules={[
             {
               required: true,
-              message: "请输入年龄!",
+              message: "人均消费(元)!",
             },
           ]}
         >
-          <Input placeholder="请输入年龄" />
+          <Input placeholder="人均消费(元)" />
           
         </Form.Item>
         <Form.Item
-          label="手机号"
+          label="好评率"
+          name="commrating"
+          rules={[
+            {
+              required: true,
+              message: "请输入好评率!",
+            },
+          ]}
+        >
+          <Input placeholder="请输入好评率" />
+        </Form.Item>
+        <Form.Item
+          label="所在位置"
+          name="local"
+          rules={[
+            {
+              required: true,
+              message: "请输入所在位置!",
+            },
+          ]}
+        >
+          <Input placeholder="请输入所在位置" />
+        </Form.Item>
+        <Form.Item
+          label="地区排名"
+          name="num"
+          rules={[
+            {
+              required: true,
+              message: "请输入地区排名!",
+            },
+          ]}
+        >
+          <Input placeholder="请输入地区排名" />
+        </Form.Item>
+        <Form.Item
+          label="交通路线"
+          name="tranroute"
+          rules={[
+            {
+              required: true,
+              message: "请输入交通路线!",
+            },
+          ]}
+        >
+          <Input placeholder="请输入交通路线" />
+        </Form.Item>
+        <Form.Item
+          label="门店电话"
           name="tel"
           rules={[
             {
               required: true,
-              message: "请输入手机号!",
+              message: "请输入门店电话!",
             },
           ]}
         >
-          <Input placeholder="请输入手机号" />
+          <Input placeholder="请输入门店电话" />
         </Form.Item>
         <Form.Item
-          label="注册日期"
-          name="regist_time"
+          label="联系人"
+          name="username"
           rules={[
             {
               required: true,
-              message: "请输入日期!",
+              message: "请输入联系人!",
             },
           ]}
         >
-          <DatePicker fromat="YYYY-MM-DD" />
-        </Form.Item>
-        <Form.Item
-          label="登录次数"
-          name="ligin_count"
-          rules={[
-            {
-              required: true,
-              message: "请输入登录次数!",
-            },
-          ]}
-        >
-          <Input placeholder="请输入登录次数" />
-        </Form.Item>
-        <Form.Item
-          label="积分"
-          name="code"
-          rules={[
-            {
-              required: true,
-              message: "请输入积分!",
-            },
-          ]}
-        >
-          <Input placeholder="请输入积分" />
-        </Form.Item>
-        <Form.Item
-          label="IP地址"
-          name="ip_adress"
-          rules={[
-            {
-              required: true,
-              message: "请输入IP地址!",
-            },
-          ]}
-        >
-          <Input placeholder="请输入IP地址" />
+          <Input placeholder="请输入联系人" />
         </Form.Item>
         <Form.Item>
           <Button

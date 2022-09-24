@@ -25,10 +25,11 @@ export const menuList = [
   {
     key: "businessMange",
     title: "商户管理",
+
     children: [
-      { key: "businessList", title: "商户列表" },
-      { key: "account", title: "登录账户" },
-      { key: "businessAnalysis", title: "商户分析" },
+      { key: "businessList", title: "商户列表",path: "/layout/businessList"},
+      { key: "account", title: "登录账户" ,path: "/layout/account"},
+      { key: "businessAnalysis", title: "商户分析",path: "/layout/businessAnalysis" },
     ],
   },
   {

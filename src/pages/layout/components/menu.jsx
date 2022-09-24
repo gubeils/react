@@ -55,9 +55,13 @@ const LayoutMenu = () => {
   };
   return (
     <div>
-      <Switch onChange={changeMode} /> Change Mode
-      <span className="ant-divider" style={{ margin: "0 1em" }} />
-      <Switch onChange={changeTheme} /> Change Theme
+      <div className="box">
+        <Switch onChange={changeMode} />
+        改变菜单展示
+        <span className="ant-divider" style={{ margin: "0 1em" }} />
+        <Switch onChange={changeTheme} />
+        改变主题
+      </div>
       <br />
       <br />
       <Menu
