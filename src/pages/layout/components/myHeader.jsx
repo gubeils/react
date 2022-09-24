@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
 import NameDropDown from "./nameDropDown";
 const MyHeader = props => {
-  const messageCount = 0;
+  const messageCount = 200;
   const username = localStorage.getItem("username");
   const [nameDropDown, setNameDropDown] = useState(false);
   function nameClick() {
@@ -10,7 +10,7 @@ const MyHeader = props => {
   }
   return (
     <div className="header">
-      <div className="title">点餐管理系统</div>
+      <div className="title">点餐后台管理系统</div>
       <div className="message">
         <span className="name">消息</span>
         <span className="count">{messageCount}</span>

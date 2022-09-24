@@ -1,90 +1,48 @@
-import React, { useEffect } from "react";
-import { Input, Button, Modal, Form, DatePicker, message,Select } from "antd";
-import { modifyUser } from "../../../api/userManage";
+import React,{useEffect} from "react";
+import { Input, Button,Modal, Form, DatePicker } from "antd";
+import { addUsers } from "../../../api/userManage";
 import moment from "moment";
-const { Option } = Select;
 
-const EditUser = (props) => {
+const AddUser = props => {
+  //添加弹窗显示状态
+  const {isAddVisible,addCancel,getList}=props
   const [form] = Form.useForm();
+  useEffect(()=>{
+    form.resetFields()
+  },[form,isAddVisible])
 
-  const { getList, record, isVisible, handleCancel } = props;
-  //取消按钮
-  useEffect(() => {
-    if (record) {
-      const {
-        id,
-        username,
-        sex,
-        age,
-        tel,
-        regist_time,
-        ligin_count,
-        code,
-        ip_adress,
-      } = record;
-      console.log(moment(regist_time), regist_time);
-      form.setFieldsValue({
-        id,
-        username,
-        sex,
-        age,
-        tel,
-        regist_time: moment(regist_time),
-        ligin_count,
-        code,
-        ip_adress,
-        key: id,
-      });
-    }
-  }, [record]);
-
-  function onChange(date, dateString) {
-    console.log(date, dateString);
+  
+  function onReset() {
+    form.resetFields();  
   }
+  // 添加用户成功表单验证方法
   function onFinish(values) {
-    console.log("Success:", values);
+    console.log(values);
+    // 将填写的时间格式化传给后端
     const params = {
       ...values,
       regist_time: moment(values.regist_time).format("YYYY-MM-DD"),
       key: values.id,
     };
-
-    modifyUser(values.id, params)
-      .then(data => {
-        console.log(data, "modifyUser");
-        message.success("修改成功");
-        // setIsVisible(false);
-        handleCancel();
-        getList();
-      })
-      .catch(err => {
-        console.log(err);
-        message.error("修改失败");
-      });
-  }
-
-  function onFinishFailed(errorInfo) {
-    console.log("Failed:", errorInfo);
-  }
-
-  function onReset() {
-    form.resetFields();
+    addUsers(params).then(data => {
+      console.log(data);
+      // setIsAddVisible(false);
+      addCancel()
+      getList();
+    });
   }
   return (
     <Modal
-      cancelText="取消"
-      okText="确认"
-      title="修改用户"
-      visible={isVisible}
-      onCancel={handleCancel}
+      title="添加用户"
+      visible={isAddVisible}
       footer={null}
+      onCancel={addCancel}
     >
       <Form
         form={form}
         labelCol={{ span: 4 }}
         wrapperCol={{ span: 12 }}
         onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
       >
         <Form.Item
           label="序号"
@@ -120,10 +78,7 @@ const EditUser = (props) => {
             },
           ]}
         >
-          <Select placeholder="请选择性别">
-            <Option value="男">男</Option>
-            <Option value="女">女</Option>
-          </Select>
+          <Input placeholder="请输入性别" />
         </Form.Item>
         <Form.Item
           label="年龄"
@@ -159,7 +114,7 @@ const EditUser = (props) => {
             },
           ]}
         >
-          <DatePicker fromat="YYYY-MM-DD" onChange={onChange} />
+          <DatePicker fromat="YYYY-MM-DD" />
         </Form.Item>
         <Form.Item
           label="登录次数"
@@ -213,4 +168,4 @@ const EditUser = (props) => {
     </Modal>
   );
 };
-export default EditUser;
+export default AddUser

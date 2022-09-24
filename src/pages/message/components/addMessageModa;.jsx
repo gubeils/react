@@ -1,65 +1,36 @@
 import React, { useEffect } from "react";
-import { Input, Button, Modal, Form, DatePicker, message,Select } from "antd";
-import { modifyUser } from "../../../api/userManage";
+import { Input, Button, Modal, Form, message, Select } from "antd";
+import { addMessage } from "../../../api/message";
 import moment from "moment";
 const { Option } = Select;
-
-const EditUser = (props) => {
+const AddMessageModal = props => {
   const [form] = Form.useForm();
 
-  const { getList, record, isVisible, handleCancel } = props;
+  const { getList, isVisible, handleCancel } = props;
   //取消按钮
   useEffect(() => {
-    if (record) {
-      const {
-        id,
-        username,
-        sex,
-        age,
-        tel,
-        regist_time,
-        ligin_count,
-        code,
-        ip_adress,
-      } = record;
-      console.log(moment(regist_time), regist_time);
-      form.setFieldsValue({
-        id,
-        username,
-        sex,
-        age,
-        tel,
-        regist_time: moment(regist_time),
-        ligin_count,
-        code,
-        ip_adress,
-        key: id,
-      });
-    }
-  }, [record]);
+    form.resetFields()
+  }, [form,isVisible]);
 
   function onChange(date, dateString) {
     console.log(date, dateString);
   }
   function onFinish(values) {
-    console.log("Success:", values);
-    const params = {
-      ...values,
-      regist_time: moment(values.regist_time).format("YYYY-MM-DD"),
-      key: values.id,
-    };
-
-    modifyUser(values.id, params)
+    // 校验成功事件
+    console.log(values, "修改通讯信息");
+    addMessage(values)
       .then(data => {
-        console.log(data, "modifyUser");
-        message.success("修改成功");
-        // setIsVisible(false);
+        console.log(data, "addMessage");
+        message.success("添加成功！");
+        // 修改成功 则关闭弹框
+        // setIsModalVisible(false);
         handleCancel();
+        // 并且 重新请求列表
         getList();
       })
       .catch(err => {
         console.log(err);
-        message.error("修改失败");
+        message.error("添加失败！");
       });
   }
 
@@ -74,7 +45,7 @@ const EditUser = (props) => {
     <Modal
       cancelText="取消"
       okText="确认"
-      title="修改用户"
+      title="添加通讯信息"
       visible={isVisible}
       onCancel={handleCancel}
       footer={null}
@@ -99,103 +70,104 @@ const EditUser = (props) => {
           <Input placeholder="请输入序号" />
         </Form.Item>
         <Form.Item
-          label="用户名"
+          label="联系人"
           name="username"
           rules={[
             {
               required: true,
-              message: "请输入用户名!",
+              message: "请输入联系人!",
             },
           ]}
         >
-          <Input placeholder="请输入用户名" />
+          <Input placeholder="请输入联系人" />
         </Form.Item>
         <Form.Item
-          label="性别"
-          name="sex"
-          rules={[
-            {
-              required: true,
-              message: "请输入性别!",
-            },
-          ]}
-        >
-          <Select placeholder="请选择性别">
-            <Option value="男">男</Option>
-            <Option value="女">女</Option>
-          </Select>
-        </Form.Item>
-        <Form.Item
-          label="年龄"
-          name="age"
-          rules={[
-            {
-              required: true,
-              message: "请输入年龄!",
-            },
-          ]}
-        >
-          <Input placeholder="请输入年龄" />
-        </Form.Item>
-        <Form.Item
-          label="手机号"
+          label="联系电话"
           name="tel"
           rules={[
             {
               required: true,
-              message: "请输入手机号!",
+              message: "请输入联系电话!",
             },
           ]}
         >
-          <Input placeholder="请输入手机号" />
+          <Input placeholder="请输入联系电话" />
         </Form.Item>
         <Form.Item
-          label="注册日期"
-          name="regist_time"
+          label="街道地址"
+          name="adress"
           rules={[
             {
               required: true,
-              message: "请输入日期!",
+              message: "请输入街道地址!",
             },
           ]}
         >
-          <DatePicker fromat="YYYY-MM-DD" onChange={onChange} />
+          <Input placeholder="请输入街道地址" />
         </Form.Item>
         <Form.Item
-          label="登录次数"
-          name="ligin_count"
+          label="邮编"
+          name="email"
           rules={[
             {
               required: true,
-              message: "请输入登录次数!",
+              message: "请输入邮编!",
             },
           ]}
         >
-          <Input placeholder="请输入登录次数" />
+          <Input placeholder="请输入邮编" />
         </Form.Item>
         <Form.Item
-          label="积分"
-          name="code"
+          label="省市区"
+          name="local"
           rules={[
             {
               required: true,
-              message: "请输入积分!",
+              message: "请输入省市区!",
             },
           ]}
         >
-          <Input placeholder="请输入积分" />
+          <Input placeholder="请输入省市区" />
         </Form.Item>
         <Form.Item
-          label="IP地址"
-          name="ip_adress"
+          label="QQ"
+          name="qqcode"
           rules={[
             {
               required: true,
-              message: "请输入IP地址!",
+              message: "请输入QQ号码!",
             },
           ]}
         >
-          <Input placeholder="请输入IP地址" />
+          <Input placeholder="请输入QQ号码" />
+        </Form.Item>
+        <Form.Item
+          label="状态"
+          name="states"
+          rules={[
+            {
+              required: true,
+              message: "请输入状态!",
+            },
+          ]}
+        >
+          <Select placeholder="请选择状态">
+            <Option value="已审核">已审核</Option>
+            <Option value="待审核">待审核</Option>
+            <Option value="未审核">未审核</Option>
+          </Select>
+        </Form.Item>
+        <Form.Item
+          label="邮箱"
+          name="mailcode"
+          rules={[
+            {
+              required: true,
+              message: "请输入邮箱!",
+            },
+          ]}
+        >
+          <Input placeholder="请输入邮箱" />
         </Form.Item>
         <Form.Item>
           <Button
@@ -213,4 +185,4 @@ const EditUser = (props) => {
     </Modal>
   );
 };
-export default EditUser;
+export default AddMessageModal;

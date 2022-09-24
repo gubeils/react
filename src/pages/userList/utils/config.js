@@ -1,4 +1,4 @@
-import {Divider,Button} from 'antd'
+import {Divider,Button,Popconfirm, Tag} from 'antd'
 // 序号	用户名	性别	年龄	手机号	注册时间	登录次数	积分	IP地址
 export const columns = (isShow, del) => [
   {
@@ -18,6 +18,16 @@ export const columns = (isShow, del) => [
     dataIndex: "sex",
     key: "sex",
     align: "center",
+    render: (cell, record) => {
+      return (
+        <>
+          {cell === "男" ? (
+            <Tag color="green">男</Tag>
+          ) : <Tag color='pink'>女</Tag> 
+          }
+        </>
+      );
+    },
   },
   {
     title: "年龄",
@@ -63,9 +73,19 @@ export const columns = (isShow, del) => [
       <>
         <Button onClick={() => isShow(record)}>修改</Button>
         <Divider type="vertical" />
-        <Button type="primary" onClick={() => del(record.id)}>
+
+        <Popconfirm
+        title="确认删除吗?"
+        onConfirm={() => del(record.id)}
+        okText="确认"
+        cancelText="取消"
+      >
+        <Button type="primary">
           删除
         </Button>
+     
+      </Popconfirm>
+       
       </>
     ),
   },

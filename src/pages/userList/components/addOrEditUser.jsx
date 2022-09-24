@@ -1,90 +1,96 @@
 import React, { useEffect } from "react";
+import { addUsers, modifyUser } from "../../../api/userManage";
 import { Input, Button, Modal, Form, DatePicker, message,Select } from "antd";
-import { modifyUser } from "../../../api/userManage";
 import moment from "moment";
-const { Option } = Select;
-
-const EditUser = (props) => {
+const {Option} = Select
+const AddOrEditUser = props => {
   const [form] = Form.useForm();
-
-  const { getList, record, isVisible, handleCancel } = props;
-  //取消按钮
+  const { visible, cancel, getList, addOrEdit, record, username } = props;
   useEffect(() => {
-    if (record) {
-      const {
-        id,
-        username,
-        sex,
-        age,
-        tel,
-        regist_time,
-        ligin_count,
-        code,
-        ip_adress,
-      } = record;
-      console.log(moment(regist_time), regist_time);
-      form.setFieldsValue({
-        id,
-        username,
-        sex,
-        age,
-        tel,
-        regist_time: moment(regist_time),
-        ligin_count,
-        code,
-        ip_adress,
-        key: id,
-      });
+    if (addOrEdit) {
+      form.resetFields();
+    } else {
+      if (record) {
+        const {
+          id,
+          username,
+          sex,
+          age,
+          tel,
+          regist_time,
+          ligin_count,
+          code,
+          ip_adress,
+        } = record;
+        console.log(moment(regist_time), regist_time);
+        form.setFieldsValue({
+          id,
+          username,
+          sex,
+          age,
+          tel,
+          regist_time: moment(regist_time),
+          ligin_count,
+          code,
+          ip_adress,
+          key: id,
+        });
+      }
     }
-  }, [record]);
+  }, [form, visible, record, addOrEdit]);
 
-  function onChange(date, dateString) {
-    console.log(date, dateString);
+  function onReset() {
+    form.resetFields();
   }
   function onFinish(values) {
-    console.log("Success:", values);
     const params = {
       ...values,
       regist_time: moment(values.regist_time).format("YYYY-MM-DD"),
       key: values.id,
     };
+    if (addOrEdit) {
+      console.log(values);
+      // 将填写的时间格式化传给后端
 
-    modifyUser(values.id, params)
-      .then(data => {
-        console.log(data, "modifyUser");
-        message.success("修改成功");
-        // setIsVisible(false);
-        handleCancel();
+      addUsers(params).then(data => {
+        console.log(data);
+        // setIsAddVisible(false);
+        cancel();
         getList();
-      })
-      .catch(err => {
-        console.log(err);
-        message.error("修改失败");
       });
-  }
+    } else {
+      console.log("Success:", values);
 
-  function onFinishFailed(errorInfo) {
-    console.log("Failed:", errorInfo);
-  }
-
-  function onReset() {
-    form.resetFields();
+      modifyUser(values.id, params)
+        .then(data => {
+          console.log(data, "modifyUser");
+          message.success("修改成功");
+          // setIsVisible(false);
+          cancel();
+          if (username) {
+            getList(values.username);
+          } else {
+            getList();
+          }
+        })
+        .catch(err => {
+          console.log(err);
+          message.error("修改失败");
+        });
+    }
   }
   return (
     <Modal
-      cancelText="取消"
-      okText="确认"
-      title="修改用户"
-      visible={isVisible}
-      onCancel={handleCancel}
+      title={addOrEdit ? "添加用户" : "修改用户"}
+      visible={visible}
       footer={null}
+      onCancel={cancel}
     >
       <Form
         form={form}
         labelCol={{ span: 4 }}
         wrapperCol={{ span: 12 }}
         onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
       >
         <Form.Item
           label="序号"
@@ -96,7 +102,7 @@ const EditUser = (props) => {
             },
           ]}
         >
-          <Input placeholder="请输入序号" />
+          <Input disabled={!addOrEdit} placeholder="请输入序号" />
         </Form.Item>
         <Form.Item
           label="用户名"
@@ -136,6 +142,7 @@ const EditUser = (props) => {
           ]}
         >
           <Input placeholder="请输入年龄" />
+          
         </Form.Item>
         <Form.Item
           label="手机号"
@@ -159,7 +166,7 @@ const EditUser = (props) => {
             },
           ]}
         >
-          <DatePicker fromat="YYYY-MM-DD" onChange={onChange} />
+          <DatePicker fromat="YYYY-MM-DD" />
         </Form.Item>
         <Form.Item
           label="登录次数"
@@ -213,4 +220,4 @@ const EditUser = (props) => {
     </Modal>
   );
 };
-export default EditUser;
+export default AddOrEditUser;
