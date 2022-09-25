@@ -21,7 +21,7 @@ const Bar = props => {
   }, [data]);
 
   function renderBar() {
-    var myChart = echarts.init(document.getElementById("analysis-bar"));
+    var myChart = echarts.init(document.getElementById("analysis-container"));
 
     let option = {
       title: {

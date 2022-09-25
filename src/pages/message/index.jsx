@@ -41,7 +41,7 @@ const UserList = props => {
   // 方法
   // 请求用户列表数据
   function getList(username) {
-    // setLoading(true); //表格加载状态 开
+    setLoading(true); //表格加载状态 开
     getMessageList(username).then(data => {
       console.log(data);
       // data 就是后台返回的数据 需要给他赋值给 datasource

@@ -24,8 +24,9 @@ const Analysis = props => {
   return (
     <div className="analysis">
       {/* 饼图 */}
-      <Bar data={data}/>
       <Pie data={data} />
+
+      <Bar data={data}/>
     </div>
   );
 };

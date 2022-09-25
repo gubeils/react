@@ -9,12 +9,11 @@ const Pie = props => {
       { value: data.filter(item => item.sex === "男").length, name: "男生" },
       { value: data.filter(item => item.sex === "女").length, name: "女生" },
     ];
-    console.log('pieData',pieData);
     renderPie();
   }, [data]);
 
   function renderPie() {
-    var myChart = echarts.init(document.getElementById("analysis-bar"));
+    var myChart = echarts.init(document.getElementById("analysis-container"));
 
     let option = {
       title: {
