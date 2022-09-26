@@ -13,10 +13,10 @@ import { getMessageList,delMessage } from "../../api/message";
 // import columns from "../utils/config";
 import MessageTable from "./components/messageTable";
 // 引入修改通讯信息弹框
-import EditMessageModal from "./components/editMessageModal";
+// import EditMessageModal from "./components/editMessageModal";
 
 // 引入添加通讯信息组件
-import AddMessageModal from "./components/addMessageModa;";
+// import AddMessageModal from "./components/addMessageModa;";
 // 引入修改用户弹窗组件
 // import EditUser from "./components/editUser";
 // import AddUser from "./components/addUser";
@@ -131,15 +131,15 @@ const UserList = props => {
     // 刷新列表
   }
   // 关闭通讯信息弹框
-  function handleCancel(){
-    setIsVisible(false)
+  // function handleCancel(){
+  //   setIsVisible(false)
 
-  }
+  // }
   // 关闭添加通讯信息弹框
-  function addCancel(){
-    console.log(111)
-    setIsAddVisible(false)
-  }
+  // function addCancel(){
+  //   console.log(111)
+  //   setIsAddVisible(false)
+  // }
   function cancel(){
     console.log(111)
     setIsVisible(false)

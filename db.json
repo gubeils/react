@@ -3,7 +3,7 @@
     {
       "id": "001",
       "username": "张三1",
-      "sex": "男",
+      "sex": "女",
       "age": "77",
       "tel": "13468092456",
       "regist_time": "2022-09-30",
@@ -227,18 +227,6 @@
       "code": "100000",
       "ip_adress": "192.168.0.0",
       "key": "021"
-    },
-    {
-      "id": "1",
-      "username": "1",
-      "sex": "女",
-      "age": "1",
-      "tel": "1",
-      "regist_time": "2022-09-20",
-      "ligin_count": "1",
-      "code": "1",
-      "ip_adress": "192.168.0.0",
-      "key": "1"
     }
   ],
   "commuinfo": [
@@ -560,19 +548,8 @@
       "num": "5",
       "tranroute": "地铁3号线",
       "tel": "0934-3423543",
-      "username": "刘老板"
-    },
-    {
-      "id": "44",
-      "merchanname": "44",
-      "type": "44",
-      "cost": "44",
-      "commrating": "44",
-      "local": "44",
-      "num": "44",
-      "tranroute": "44",
-      "tel": "44",
-      "username": "44"
+      "username": "刘老板",
+      "key": "012"
     }
   ],
   "loginaccou": [
@@ -815,21 +792,33 @@
     {
       "id": "001",
       "ordercode": "ewrwadw",
-      "ordertime": "2021-09-12T15:22",
+      "ordertime": "2022-09-26",
       "ordermoney": "999",
       "goodsname": "牛市",
       "goodscount": 898,
       "ordertype": "支付宝",
       "username": "小丽",
-      "state": "已收货",
-      "key": 0
+      "state": "待配送",
+      "key": "001"
     },
     {
-      "id": "0422",
+      "id": "002",
       "ordercode": "8gfd667gh6",
-      "ordertime": "2021-09-12T15:21",
+      "ordertime": "2021-09-12",
       "ordermoney": "890",
       "goodsname": "鸡排",
+      "goodscount": "7",
+      "ordertype": "支付宝",
+      "username": "小芳",
+      "state": "配送中",
+      "key": "002"
+    },
+    {
+      "id": "003",
+      "ordercode": "8gfd667gh6",
+      "ordertime": "2021-09-12",
+      "ordermoney": "890",
+      "goodsname": "米线",
       "goodscount": "7",
       "ordertype": "支付宝",
       "username": "小芳",

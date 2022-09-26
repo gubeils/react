@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Input, Button, message } from "antd";
 import UserTable from "./components/userTable";
-import {getLoginaccou,modifyLoginaccou,addLoginaccou,delLoginaccou,} from "../../api/loginaccou";
+import {getLoginaccou,delLoginaccou,} from "../../api/loginaccou";
 import AddOrEditUser from "./components/addOrEditUser";
 const BusinessList = props => {
   const [dataSource, setDataSource] = useState([]); // 声明dataSource

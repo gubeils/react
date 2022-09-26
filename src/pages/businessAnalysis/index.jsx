@@ -38,7 +38,7 @@ const Analysis = props => {
       },
       legend: {
         orient: "vertical",
-        left: "right",
+        left: "top",
       },
       series: [
         {

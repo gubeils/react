@@ -9,6 +9,8 @@ import Analysis from "../analysis";
 import BusinessList from "../businessList";
 import Account from "../account";
 import BusinessAnalysis from "../businessAnalysis";
+import OrderAnalysis from "../orderAnalysis";
+import OrderList from "../orderList";
 import "./index.less";
 
 const Layout = props => {
@@ -35,9 +37,15 @@ const Layout = props => {
             {/* 商户列表 */}
             <Route path="/layout/businessList" component={BusinessList}></Route>
             {/* 登陆账户 */}
-            <Route path="/layout/Account" component={Account}></Route>
+            <Route path="/layout/account" component={Account}></Route>
             {/* 商户分析 */}
-            <Route path="/layout/BusinessAnalysis" component={BusinessAnalysis}></Route>
+            <Route path="/layout/businessAnalysis" component={BusinessAnalysis}></Route>
+            {/* 订单列表 */}
+            <Route path="/layout/orderList" component={OrderList}></Route>
+            {/* 订单分析 */}
+            <Route path="/layout/orderAnalysis" component={OrderAnalysis}></Route>
+            
+        
           </Switch>
         </div>
       </div>

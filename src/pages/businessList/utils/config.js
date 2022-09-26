@@ -1,4 +1,4 @@
-import {Divider,Button,Popconfirm, Tag} from 'antd'
+import {Divider,Button,Popconfirm} from 'antd'
 // 序号	用户名	性别	年龄	手机号	注册时间	登录次数	积分	IP地址
 export const columns = (isShow, del) => [
   // "id": "001",
@@ -41,7 +41,7 @@ export const columns = (isShow, del) => [
     // },
   },
   {
-    title: "人均消费(元)",
+    title: "人均消费",
     dataIndex: "cost",
     key: "cost",
     align: "center",

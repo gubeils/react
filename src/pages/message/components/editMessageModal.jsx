@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Input, Button, Modal, Form, message, Select } from "antd";
 import { putMessage } from "../../../api/message";
-import moment from "moment";
+// import moment from "moment"; cls
 const { Option } = Select;
 const EditMessageModal = props => {
   const [form] = Form.useForm();

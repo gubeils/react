@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import { modifyMerchan, addMerchan } from "../../../api/merchanlist";
+import { modifyOrder, addOrder } from "../../../api/order";
 
-import { Input, Button, Modal, Form, message,Select } from "antd";
-// import moment from "moment";
-// const {Option} = Select
+import { Input, Button, Modal, Form, message,Select,DatePicker } from "antd";
+import moment from "moment";
+const {Option} = Select
 const AddOrEditUser = props => {
   const [form] = Form.useForm();
-  const { visible, cancel, getList, addOrEdit, record, merchanname } = props;
+  const { visible, cancel, getList, addOrEdit, record, id } = props;
   useEffect(() => {
     if (addOrEdit) {
       form.resetFields();
@@ -14,30 +14,29 @@ const AddOrEditUser = props => {
       if (record) {
         const {
           id,
-          merchanname,
-          type,
-          cost,
-          commrating,
-          local,
-          num,
-          tranroute,
-          tel,
+          ordercode,
+          ordertime,
+          ordermoney,
+          goodsname,
+          goodscount,
+          ordertype,
           username,
+          state,
+          key,
           
         } = record;
         // console.log(moment(regist_time), regist_time);
         form.setFieldsValue({
           id,
-          merchanname,
-          type,
-          cost,
-          commrating,
-          local,
-          num,
-          tranroute,
-          tel,
+          ordercode,
+          ordertime:moment(ordertime),
+          ordermoney,
+          goodsname,
+          goodscount,
+          ordertype,
           username,
-          key: id,
+          state,
+          key:id
         });
       }
     }
@@ -49,14 +48,14 @@ const AddOrEditUser = props => {
   function onFinish(values) {
     const params = {
       ...values,
-      // regist_time: moment(values.regist_time).format("YYYY-MM-DD"),
+      ordertime: moment(values.ordertime).format("YYYY-MM-DD"),
       key: values.id,
     };
     if (addOrEdit) {
       console.log(values);
       // 将填写的时间格式化传给后端
 
-      addMerchan(params).then(data => {
+      addOrder(params).then(data => {
         console.log(data);
         // setIsAddVisible(false);
         cancel();
@@ -65,14 +64,14 @@ const AddOrEditUser = props => {
     } else {
       console.log("Success:", values);
 
-      modifyMerchan(values.id, params)
+      modifyOrder(values.id, params)
         .then(data => {
           console.log(data, "modifyUser");
           message.success("修改成功");
           // setIsVisible(false);
           cancel();
-          if (merchanname) {
-            getList(values.merchanname);
+          if (id) {
+            getList(values.id);
           } else {
             getList();
           }
@@ -109,28 +108,29 @@ const AddOrEditUser = props => {
           <Input disabled={!addOrEdit} placeholder="请输入商户ID" />
         </Form.Item>
         <Form.Item
-          label="商户名称"
-          name="merchanname"
+          label="订单编号"
+          name="ordercode"
           rules={[
             {
               required: true,
-              message: "请输入商户名称!",
+              message: "请输入订单编号",
             },
           ]}
         >
-          <Input placeholder="请输入商户名称" />
+          <Input placeholder="请输入订单编号" />
         </Form.Item>
         <Form.Item
-          label="经营品类"
-          name="type"
+          label="下单时间"
+          name="ordertime"
           rules={[
             {
               required: true,
-              message: "请输入经营品类!",
+              message: "请输入下单时间!",
             },
           ]}
         >
-          <Input placeholder="请输入经营品类" />
+          <DatePicker fromat="YYYY-MM-DD" />
+
 
           {/* <Select placeholder="请选择性别">
             <Option value="男">男</Option>
@@ -138,90 +138,86 @@ const AddOrEditUser = props => {
           </Select> */}
         </Form.Item>
         <Form.Item
-          label="人均消费"
-          name="cost"
+          label="订单金额"
+          name="ordermoney"
           rules={[
             {
               required: true,
-              message: "人均消费(元)!",
+              message: "请输入订单金额!",
             },
           ]}
         >
-          <Input placeholder="人均消费(元)" />
+          <Input placeholder="请输入订单金额!" />
           
         </Form.Item>
         <Form.Item
-          label="好评率"
-          name="commrating"
+          label="商品名称"
+          name="goodsname"
           rules={[
             {
               required: true,
-              message: "请输入好评率!",
+              message: "请输入商品名称!",
             },
           ]}
         >
-          <Input placeholder="请输入好评率" />
+          <Input placeholder="请输入商品名称!" />
+          
         </Form.Item>
         <Form.Item
-          label="所在位置"
-          name="local"
+          label="数量"
+          name="goodscount"
           rules={[
             {
               required: true,
-              message: "请输入所在位置!",
+              message: "请输入数量!",
             },
           ]}
         >
-          <Input placeholder="请输入所在位置" />
+          <Input placeholder="请输入数量!" />
         </Form.Item>
         <Form.Item
-          label="地区排名"
-          name="num"
+          label="支付方式"
+          name="ordertype"
           rules={[
             {
               required: true,
-              message: "请输入地区排名!",
+              message: "请输入支付方式!",
             },
           ]}
         >
-          <Input placeholder="请输入地区排名" />
+          <Input placeholder="请输入支付方式!" />
         </Form.Item>
         <Form.Item
-          label="交通路线"
-          name="tranroute"
-          rules={[
-            {
-              required: true,
-              message: "请输入交通路线!",
-            },
-          ]}
-        >
-          <Input placeholder="请输入交通路线" />
-        </Form.Item>
-        <Form.Item
-          label="门店电话"
-          name="tel"
-          rules={[
-            {
-              required: true,
-              message: "请输入门店电话!",
-            },
-          ]}
-        >
-          <Input placeholder="请输入门店电话" />
-        </Form.Item>
-        <Form.Item
-          label="联系人"
+          label="用户名"
           name="username"
           rules={[
             {
               required: true,
-              message: "请输入联系人!",
+              message: "请输入用户名!",
             },
           ]}
         >
-          <Input placeholder="请输入联系人" />
+          <Input placeholder="请输入用户名" />
         </Form.Item>
+        <Form.Item
+          label="订单状态"
+          name="state"
+          rules={[
+            {
+              required: true,
+              message: "请输入订单状态!",
+            },
+          ]}
+        >
+          
+          <Select placeholder="请选择状态">
+            <Option value="待配送">待配送</Option>
+            <Option value="配送中">配送中</Option>
+            <Option value="已收货">已收货</Option>
+
+          </Select>
+        </Form.Item>
+       
         <Form.Item>
           <Button
             style={{ margin: "0px 20px" }}

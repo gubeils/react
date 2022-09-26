@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Menu, Switch } from "antd";
+import  { Menu, Switch } from "antd";
 import { useHistory } from "react-router-dom";
 import { menuList } from "../utils/config";
 const { SubMenu } = Menu;

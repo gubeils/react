@@ -1,9 +1,9 @@
-// 声明菜单数据
+
 export const menuList = [
   {
     key: "userMange",
     title: "用户管理",
-
+   
     children: [
       {
         key: "userList",
@@ -36,33 +36,33 @@ export const menuList = [
     key: "orderMange",
     title: "订单管理",
     children: [
-      { key: "orderList", title: "订单列表" },
-      { key: "orderAnalysis", title: "订单分析" },
+      { key: "orderList", title: "订单列表",path: "/layout/orderList" },
+      { key: "orderAnalysis", title: "订单分析",path: "/layout/orderAnalysis" },
     ],
   },
-  { key: "payments", title: "收支管理" },
-  { key: "platform", title: "平台管理" },
-  {
-    key: "safe",
-    title: "安全管理",
-    children: [
-      {
-        key: "1",
-        title: "test1",
-        children: [
-          {
-            key: "1-2",
-            title: "test1-2",
-            children: [
-              { key: "1-2-1", title: "test2" },
-              { key: "1-2-2", title: "test3" },
-            ],
-          },
-          { key: "1-3", title: "test1-3" },
-        ],
-      },
-      { key: "2", title: "test2" },
-      { key: "3", title: "test3" },
-    ],
-  },
+  // { key: "payments", title: "收支管理" },
+  // { key: "platform", title: "平台管理" },
+  // {
+  //   key: "safe",
+  //   title: "安全管理",
+  //   children: [
+  //     {
+  //       key: "1",
+  //       title: "test1",
+  //       children: [
+  //         {
+  //           key: "1-2",
+  //           title: "test1-2",
+  //           children: [
+  //             { key: "1-2-1", title: "test2" },
+  //             { key: "1-2-2", title: "test3" },
+  //           ],
+  //         },
+  //         { key: "1-3", title: "test1-3" },
+  //       ],
+  //     },
+  //     { key: "2", title: "test2" },
+  //     { key: "3", title: "test3" },
+  //   ],
+  // },
 ];

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Input, Button, Modal, Form, message, Select } from "antd";
 import { addMessage } from "../../../api/message";
-import moment from "moment";
+// import moment from "moment";
 const { Option } = Select;
 const AddMessageModal = props => {
   const [form] = Form.useForm();
@@ -12,9 +12,9 @@ const AddMessageModal = props => {
     form.resetFields()
   }, [form,isVisible]);
 
-  function onChange(date, dateString) {
-    console.log(date, dateString);
-  }
+  // function onChange(date, dateString) {
+  //   console.log(date, dateString);
+  // }
   function onFinish(values) {
     // 校验成功事件
     console.log(values, "修改通讯信息");

@@ -42,9 +42,9 @@ const AddOrEditMessage = props => {
     }
   }, [form, isVisible, addOrEdit, record]);
 
-  function onChange(date, dateString) {
-    console.log(date, dateString);
-  }
+  // function onChange(date, dateString) {
+  //   console.log(date, dateString);
+  // }
   function onFinish(values) {
     // 校验成功事件
     if (addOrEdit) {
