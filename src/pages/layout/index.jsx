@@ -1,7 +1,7 @@
 import React from "react";
 import MyHeader from "./components/myHeader";
 import { Redirect, Route, Switch } from "react-router-dom";
-
+import { ShoppingOutlined, AreaChartOutlined } from "@ant-design/icons";
 import LayoutMenu from "./components/menu";
 import UserList from "../userList";
 import Message from "../message";
@@ -29,7 +29,7 @@ const Layout = props => {
             {/* 重定向 */}
             <Redirect exact={true} to="/layout/userlist" from="/layout"></Redirect>
             {/* 用户列表 */}
-            <Route path="/layout/userlist" component={UserList}></Route>
+            <Route path="/layout/userlist"  component={UserList}></Route>
             {/* 通讯信息 */}
             <Route path="/layout/message" component={Message}></Route>
             {/* 统计分析 */}

@@ -2,8 +2,8 @@
   "userlist": [
     {
       "id": "001",
-      "username": "张三1",
-      "sex": "女",
+      "username": "张三",
+      "sex": "男",
       "age": "77",
       "tel": "13468092456",
       "regist_time": "2022-09-30",
@@ -793,9 +793,9 @@
       "id": "001",
       "ordercode": "ewrwadw",
       "ordertime": "2022-09-26",
-      "ordermoney": "999",
+      "ordermoney": "99",
       "goodsname": "牛市",
-      "goodscount": 898,
+      "goodscount": "6",
       "ordertype": "支付宝",
       "username": "小丽",
       "state": "待配送",
@@ -805,7 +805,7 @@
       "id": "002",
       "ordercode": "8gfd667gh6",
       "ordertime": "2021-09-12",
-      "ordermoney": "890",
+      "ordermoney": "49",
       "goodsname": "鸡排",
       "goodscount": "7",
       "ordertype": "支付宝",
@@ -817,13 +817,133 @@
       "id": "003",
       "ordercode": "8gfd667gh6",
       "ordertime": "2021-09-12",
-      "ordermoney": "890",
+      "ordermoney": "70",
       "goodsname": "米线",
       "goodscount": "7",
       "ordertype": "支付宝",
       "username": "小芳",
       "state": "已收货",
-      "key": 1
+      "key": "003"
+    },
+    {
+      "id": "004",
+      "ordercode": "sdsdsfdfd",
+      "ordertime": "2021-09-12",
+      "ordermoney": "460",
+      "goodsname": "北京烤鸭",
+      "goodscount": "4",
+      "ordertype": "微信",
+      "username": "小芳",
+      "state": "已收货",
+      "key": 4
+    },
+    {
+      "id": "005",
+      "ordercode": "gtyyyhdgd",
+      "ordertime": "2021-09-12",
+      "ordermoney": "120",
+      "goodsname": "牛肉面",
+      "goodscount": "10",
+      "ordertype": "支付宝",
+      "username": "小芳",
+      "state": "已收货",
+      "key": 5
+    },
+    {
+      "id": "006",
+      "ordercode": "grsrrsrs",
+      "ordertime": "2021-09-12",
+      "ordermoney": "120",
+      "goodsname": "羊肉馅饺子",
+      "goodscount": "6",
+      "ordertype": "微信",
+      "username": "小芳",
+      "state": "已收货",
+      "key": 6
+    },
+    {
+      "id": "007",
+      "ordercode": "mikulujh",
+      "ordertime": "2021-09-12",
+      "ordermoney": "250",
+      "goodsname": "水盆羊肉",
+      "goodscount": "1",
+      "ordertype": "支付宝",
+      "username": "小芳",
+      "state": "已收货",
+      "key": 7
+    },
+    {
+      "id": "008",
+      "ordercode": "dwfdsvdg",
+      "ordertime": "2021-09-12",
+      "ordermoney": "120",
+      "goodsname": "手抓饼",
+      "goodscount": "30",
+      "ordertype": "支付宝",
+      "username": "小芳",
+      "state": "已收货",
+      "key": 8
+    },
+    {
+      "id": "009",
+      "ordercode": "gttjuki",
+      "ordertime": "2021-09-12",
+      "ordermoney": "120",
+      "goodsname": "乾县豆腐脑",
+      "goodscount": "20",
+      "ordertype": "支付宝",
+      "username": "小芳",
+      "state": "已收货",
+      "key": 9
+    },
+    {
+      "id": "010",
+      "ordercode": "grthyjuu",
+      "ordertime": "2021-09-12",
+      "ordermoney": "120",
+      "goodsname": "羊肉泡馍",
+      "goodscount": "3",
+      "ordertype": "微信",
+      "username": "小芳",
+      "state": "已收货",
+      "key": 10
+    },
+    {
+      "id": "011",
+      "ordercode": "gfeefef",
+      "ordertime": "2021-09-12",
+      "ordermoney": "167",
+      "goodsname": "岐山臊子面",
+      "goodscount": "18",
+      "ordertype": "支付宝",
+      "username": "小芳",
+      "state": "已收货",
+      "key": 11
+    },
+    {
+      "id": "012",
+      "ordercode": "vcbghgr",
+      "ordertime": "2021-09-12",
+      "ordermoney": "120",
+      "goodsname": "魏家凉皮",
+      "goodscount": "9",
+      "ordertype": "微信",
+      "username": "小芳",
+      "state": "已收货",
+      "key": 12
+    },
+    {
+      "id": "013",
+      "ordercode": "djsdskdo",
+      "ordertime": "2022-09-27",
+      "ordermoney": "20",
+      "goodsname": "汉堡",
+      "goodscount": "1",
+      "ordertype": "支付宝",
+      "username": "小李",
+      "state": "已收货",
+      "key": "013"
     }
   ],
   "loginadmin": [
@@ -903,5 +1023,11 @@
         }
       ]
     }
+  ],
+  "login":[
+    {
+      "id":"001"
+    }
   ]
+
 }

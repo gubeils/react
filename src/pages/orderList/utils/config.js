@@ -1,4 +1,4 @@
-import {Divider,Button,Popconfirm,Tag} from 'antd'
+import { Divider, Button, Popconfirm, Tag } from "antd";
 // 序号	用户名	性别	年龄	手机号	注册时间	登录次数	积分	IP地址
 export const columns = (isShow, del) => [
   // "id": "001",
@@ -28,7 +28,6 @@ export const columns = (isShow, del) => [
     dataIndex: "ordertime",
     key: "ordertime",
     align: "center",
-    
   },
   {
     title: "订单金额",
@@ -70,16 +69,16 @@ export const columns = (isShow, del) => [
         <>
           {cell === "待配送" ? (
             <Tag color="red">待配送</Tag>
-          ) :
-            (cell === "配送中" ?  <Tag color='orange'>配送中</Tag> : <Tag color='green'>已收货</Tag>) 
-          
-          }
+          ) : cell === "配送中" ? (
+            <Tag color="orange">配送中</Tag>
+          ) : (
+            <Tag color="green">已收货</Tag>
+          )}
         </>
       );
     },
   },
-  
-  
+
   {
     title: "操作",
     key: "ctrl",
@@ -90,17 +89,13 @@ export const columns = (isShow, del) => [
         <Divider type="vertical" />
 
         <Popconfirm
-        title="确认删除吗?"
-        onConfirm={() => del(record.id)}
-        okText="确认"
-        cancelText="取消"
-      >
-        <Button type="primary">
-          删除
-        </Button>
-     
-      </Popconfirm>
-       
+          title="确认删除吗?"
+          onConfirm={() => del(record.id)}
+          okText="确认"
+          cancelText="取消"
+        >
+          <Button type="primary">删除</Button>
+        </Popconfirm>
       </>
     ),
   },

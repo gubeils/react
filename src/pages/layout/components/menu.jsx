@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import  { Menu, Switch } from "antd";
-import { useHistory } from "react-router-dom";
+import { useHistory} from "react-router-dom";
 import { menuList } from "../utils/config";
+
+
 const { SubMenu } = Menu;
 
 const LayoutMenu = () => {
@@ -44,7 +46,8 @@ const LayoutMenu = () => {
         })}
       </SubMenu>
     ) : (
-      <Menu.Item onClick={() => menuClick(params)} key={params.key}>
+      <Menu.Item
+       style={{marginLeft:'-2px',width:'174px'}} onClick={() => menuClick(params)} icon={params.icon} key={params.key}>
         {params.title}
       </Menu.Item>
     );
@@ -65,7 +68,7 @@ const LayoutMenu = () => {
       <br />
       <br />
       <Menu
-        style={{ width: 166 }}
+        style={{ width: 168 }}
         defaultSelectedKeys={["userList"]}
         defaultOpenKeys={["userManage"]}
         mode={mode}
