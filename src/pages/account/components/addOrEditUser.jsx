@@ -45,7 +45,7 @@ const AddOrEditUser = props => {
           logincount,
           order,
           safelevel,
-          key
+    
         } = record;
         // console.log(moment(regist_time), regist_time);
         form.setFieldsValue({

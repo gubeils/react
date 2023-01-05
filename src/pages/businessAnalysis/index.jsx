@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getMerchanlist } from "../../api/merchanlist";
-import { Switch } from "antd";
+
 import * as echarts from "echarts";
 import "./index.less";
 // import { Switch } from "react-router-dom";
@@ -13,14 +13,11 @@ const Analysis = props => {
   let barData;
 
   // console.log('values',values);
-  useEffect(()=>{
-  getList()
-   
-
-  },[])
+  useEffect(() => {
+    getList();
+  }, []);
 
   useEffect(() => {
-
     barData = data.map(item => {
       return { value: item.cost * 1, name: item.merchanname };
     });
@@ -30,7 +27,7 @@ const Analysis = props => {
     let option = {
       title: {
         text: "人均消费统计",
-    
+
         left: "center",
       },
       tooltip: {
@@ -42,7 +39,6 @@ const Analysis = props => {
       },
       series: [
         {
-        
           type: "pie",
           radius: "50%",
           data: barData,
@@ -73,7 +69,6 @@ const Analysis = props => {
       {/* <Bar data={data}/>
       <Pie data={data} /> */}
       <div id="analysis-container"></div>
-     
     </div>
   );
 };

@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { modifyOrder, addOrder } from "../../../api/order";
 
-import { Input, Button, Modal, Form, message,Select,DatePicker } from "antd";
+import { Input, Button, Modal, Form, message, Select, DatePicker } from "antd";
 import moment from "moment";
-const {Option} = Select
+const { Option } = Select;
 const AddOrEditUser = props => {
   const [form] = Form.useForm();
   const { visible, cancel, getList, addOrEdit, record, id } = props;
@@ -22,21 +22,19 @@ const AddOrEditUser = props => {
           ordertype,
           username,
           state,
-          key,
-          
         } = record;
         // console.log(moment(regist_time), regist_time);
         form.setFieldsValue({
           id,
           ordercode,
-          ordertime:moment(ordertime),
+          ordertime: moment(ordertime),
           ordermoney,
           goodsname,
           goodscount,
           ordertype,
           username,
           state,
-          key:id
+          key: id,
         });
       }
     }
@@ -131,7 +129,6 @@ const AddOrEditUser = props => {
         >
           <DatePicker fromat="YYYY-MM-DD" />
 
-
           {/* <Select placeholder="请选择性别">
             <Option value="男">男</Option>
             <Option value="女">女</Option>
@@ -148,7 +145,6 @@ const AddOrEditUser = props => {
           ]}
         >
           <Input placeholder="请输入订单金额!" />
-          
         </Form.Item>
         <Form.Item
           label="商品名称"
@@ -161,7 +157,6 @@ const AddOrEditUser = props => {
           ]}
         >
           <Input placeholder="请输入商品名称!" />
-          
         </Form.Item>
         <Form.Item
           label="数量"
@@ -209,15 +204,13 @@ const AddOrEditUser = props => {
             },
           ]}
         >
-          
           <Select placeholder="请选择状态">
             <Option value="待配送">待配送</Option>
             <Option value="配送中">配送中</Option>
             <Option value="已收货">已收货</Option>
-
           </Select>
         </Form.Item>
-       
+
         <Form.Item>
           <Button
             style={{ margin: "0px 20px" }}

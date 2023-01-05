@@ -18,20 +18,26 @@ const OrderAnalysis = props => {
   }, []);
 
   useEffect(() => {
-    
-      barData = [
-        data.filter(item => item.ordermoney > 0 && item.ordermoney <= 30).length,
-        data.filter(item => item.ordermoney > 31 && item.ordermoney <= 60).length,
-        data.filter(item => item.ordermoney > 61 && item.ordermoney <= 90).length,
-        data.filter(item => item.ordermoney > 91 && item.ordermoney <= 120).length,
-        data.filter(item => item.ordermoney > 121 && item.ordermoney <= 150).length,
-        data.filter(item => item.ordermoney > 151 && item.ordermoney <= 180).length,
-        data.filter(item => item.ordermoney > 181 && item.ordermoney <= 210).length,
-        data.filter(item => item.ordermoney > 211 && item.ordermoney <= 240).length,
-        data.filter(item => item.ordermoney > 241 && item.ordermoney <= 270).length,
-        data.filter(item => item.ordermoney > 271 && item.ordermoney <= 300).length,
-      ];
-    
+    barData = [
+      data.filter(item => item.ordermoney > 0 && item.ordermoney <= 30).length,
+      data.filter(item => item.ordermoney > 31 && item.ordermoney <= 60).length,
+      data.filter(item => item.ordermoney > 61 && item.ordermoney <= 90).length,
+      data.filter(item => item.ordermoney > 91 && item.ordermoney <= 120)
+        .length,
+      data.filter(item => item.ordermoney > 121 && item.ordermoney <= 150)
+        .length,
+      data.filter(item => item.ordermoney > 151 && item.ordermoney <= 180)
+        .length,
+      data.filter(item => item.ordermoney > 181 && item.ordermoney <= 210)
+        .length,
+      data.filter(item => item.ordermoney > 211 && item.ordermoney <= 240)
+        .length,
+      data.filter(item => item.ordermoney > 241 && item.ordermoney <= 270)
+        .length,
+      data.filter(item => item.ordermoney > 271 && item.ordermoney <= 300)
+        .length,
+    ];
+
     var myChart = echarts.init(document.getElementById("container-box"));
 
     let option = {
@@ -40,10 +46,10 @@ const OrderAnalysis = props => {
         left: "center",
       },
       tooltip: {
-        trigger: 'axis',
+        trigger: "axis",
         axisPointer: {
-          type: 'shadow'
-        }
+          type: "shadow",
+        },
       },
       xAxis: {
         type: "category",

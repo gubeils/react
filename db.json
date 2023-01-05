@@ -556,11 +556,10 @@
     {
       "id": "001",
       "name": "北京烤鸭",
-      "accouname": "dsfgsa",
       "tel": 13289763483,
       "registime": "2022-09-25",
       "root": "管理员",
-      "roottype": "高级",
+      "roottype": "中级",
       "state": "启用",
       "username": "张三",
       "workcode": "0981",
@@ -1024,10 +1023,24 @@
       ]
     }
   ],
-  "login":[
+  "login111": [
     {
-      "id":"001"
+      "id": "001"
+    },
+    {
+      "id": "LlR85n-"
+    },
+    {
+      "id": "RUD2KwA"
+    },
+    {
+      "id": "3NrQzRY"
+    },
+    {
+      "id": "JtYBxe4"
+    },
+    {
+      "id": "BgvH6O2"
     }
   ]
-
 }
